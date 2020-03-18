@@ -1,9 +1,23 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Members from './Members';
 
 function Form() {
-    render(
-        <form>
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        setMembers({
+            firstName: event.target.fName,
+            lastName: event.target.lName,
+            email: event.target.email,
+            position: event.target.position,
+            id: event.target.id,
+        })
+    }
+    return(
+
+        
+        <form className='form'>
 
             <label>First Name: 
                 <input name='fName' type='text' />
@@ -23,8 +37,13 @@ function Form() {
                 <option value='3'>Designer</option>
             </label>
 
+            <button type='submit' onsubmit={onSubmit}>Submit</button>
+
         </form>
+
     )
+       
+    
 }
 
 export default Form;
